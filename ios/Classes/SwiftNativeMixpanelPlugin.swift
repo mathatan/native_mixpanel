@@ -85,6 +85,8 @@ import Mixpanel
         } else {
           result(FlutterError(code: "Parse Error", message: "Could not parse arguments for incrementPeopleProperties platform call. Needs valid JSON data.", details: nil))
         }
+      } else if(call.method == "trackPeopleCharge") {
+        Mixpanel.mainInstance().people.trackCharge(amount: call.arguments as! Double)
       } else if(call.method == "registerSuperProperties") {
         if let argProperties = try self.getPropertiesFromArguments(callArguments: call.arguments) {
           Mixpanel.mainInstance().registerSuperProperties(argProperties)

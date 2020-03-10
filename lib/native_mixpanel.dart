@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -95,6 +96,10 @@ class Mixpanel extends _Mixpanel {
 
   Future incrementPeopleProperties(Map<String, double> props) {
     return this._mp.track('incrementPeopleProperties', jsonEncode(props));
+  }
+
+  Future trackPeopleCharge(Double amount) {
+    return this._mp.track('trackPeopleCharge', amount);
   }
 
   Future registerSuperProperties(Map<String, dynamic> props) {

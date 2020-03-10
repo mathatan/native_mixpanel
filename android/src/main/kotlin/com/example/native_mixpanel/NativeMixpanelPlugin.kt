@@ -79,6 +79,9 @@ class NativeMixpanelPlugin: MethodCallHandler {
         mixpanel?.people?.increment(map)
         result.success("Increment People Properties success..")
       }
+    } else if(call.method == "trackPeopleCharge") {
+      mixpanel?.people?.trackCharge(call.arguments.toDouble())
+      result.success("Track charge success..")      
     } else if(call.method == "registerSuperProperties") {
       if (call.arguments == null) {
         result.error("Parse Error", "Arguments required for registerSuperProperties platform call", null)
